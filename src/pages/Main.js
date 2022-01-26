@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   max-width: 1200px;
   margin: auto;
 `;
+
 const Main = () => {
   return (
     <Wrapper>
