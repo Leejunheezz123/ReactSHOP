@@ -1,18 +1,20 @@
 import React from "react";
+import styled from "../style";
+
 import TestNavi from "../components/TestNavi";
-import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
   max-width: 1200px;
   margin: auto;
 `;
-const Main = () => {
+
+const PrdList = () => {
   return (
     <Wrapper>
       <TestNavi />
-      <h1>prdList</h1>
+      <h1>Product List</h1>
     </Wrapper>
   );
 };
 
-export default Main;
+export default PrdList;
