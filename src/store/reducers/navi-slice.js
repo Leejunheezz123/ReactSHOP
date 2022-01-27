@@ -1,29 +1,43 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { 액션Async } from "../apis/액션-api";
+import axios from "axios";
 
-/***steate****************** */
-const state = {};
-/*** async action************ */
-export const 액션명 = createAsyncThunk("네임/액션명", async (매개변수) => {
-  const 데이터 = await 액션Async(매개변수);
-  return 데이터;
+/** state *************/
+const state = {
+  selTree: "",
+  allTree: [],
+};
+
+/** async action ******/
+export const getAllTree = createAsyncThunk("tree/asyncTree", async () => {
+  const url = "http://127.0.0.1:3100/api/tree";
+  const { data } = await axios.get(url);
+  const tree = data[0].children.map((v) => {
+    let children = v.children.map((v2) => ({ id: v2.id, title: v2.text }));
+    return { id: v.id, title: v.text, children };
+  });
+  return tree;
 });
-/***reducer  ************ */
-export const 슬라이스네임 = createSlice({
-  name: "네임",
+
+/** reducer ***********/
+export const treeSlice = createSlice({
+  name: "tree",
   state,
   reducers: {
-    //Sync
-    액션크리에이터명: () => {},
+    setTree: (state, { payload }) => {
+      state.selTree = payload;
+    },
   },
   extraReducers: (builder) => {
-    // Async
     builder
-      .addCase(액션명.pending, (state) => {})
-      .addCase(액션명.fulfilled, (state) => {})
-      .addCase(액션명.rejected, (state) => {});
+      .addCase(getAllTree.fulfilled, (state, { payload }) => {
+        state.allTree = payload;
+      })
+      .addCase(getAllTree.rejected, (state, { payload }) => {
+        console.log(payload);
+      });
   },
 });
-/***method  ************ */
 
-export default 슬라이스네임.reducer;
+/** method ************/
+export const { setTree } = treeSlice.actions;
+export default treeSlice.reducer;
