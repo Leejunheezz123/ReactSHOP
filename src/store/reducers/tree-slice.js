@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 /** state *************/
-const state = {
+const initialState = {
   selTree: "",
   allTree: [],
 };
@@ -21,7 +21,7 @@ export const getAllTree = createAsyncThunk("tree/asyncTree", async () => {
 /** reducer ***********/
 export const treeSlice = createSlice({
   name: "tree",
-  state,
+  initialState,
   reducers: {
     setTree: (state, { payload }) => {
       state.selTree = payload;
