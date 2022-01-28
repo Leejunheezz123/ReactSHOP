@@ -7,6 +7,10 @@ export const Container = styled.div`
   margin: auto;
 `;
 
+export const SmallContainer = styled(Container)`
+  max-width: 1232px;
+`;
+
 export const Underline = styled.div`
   &:after {
     content: "";
@@ -16,7 +20,7 @@ export const Underline = styled.div`
     background-color: ${(props) => props.color};
     transition: all 0.5s;
     transform: scaleX(0);
-    trnsform-origin: left center;
+    transform-origin: left center;
   }
   &:hover {
     &:after {
