@@ -3,9 +3,8 @@ import { useDispatch } from "react-redux";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
-import { flex } from "../../style/index.js";
+import { flex } from "../../style";
 import { getAllTree } from "../../store/reducers/tree-slice";
-
 import LogoCp from "./LogoCp";
 import NaviWrapCp from "./NaviWrapCp";
 
@@ -20,10 +19,10 @@ const HeaderCp = () => {
   useEffect(() => {
     dispatch(getAllTree());
   }, [dispatch]);
+
   return (
     <Wrapper>
       <LogoCp type="B" />
-
       <NaviWrapCp />
     </Wrapper>
   );

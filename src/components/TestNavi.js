@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; //react 라우터 부르기
-import styled from "@emotion/styled"; //스타일드 컴포넌트 부르기
+import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
 
 const NaviWrap = styled.ul`
   display: flex;
@@ -8,8 +8,9 @@ const NaviWrap = styled.ul`
   margin-bottom: 1em;
   background-color: #eee;
   border-bottom: 1px solid #999;
-  list-style-type: none;
+  list-style: none;
 `;
+
 const Navi = styled(Link)`
   padding: 0.5em;
   display: inline-block;
