@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled, { Underline, color } from "../../style";
+import styled, { Underline, color, AnimationWrapper } from "../../style";
 
-const ListWrap = styled.li`
+const ListWrap = styled(AnimationWrapper)`
   min-width: 150px;
   padding: 1em;
   position: absolute;
   top: 3em;
   left: 0;
   background-color: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 `;
 
 const List = styled.div`

@@ -1,19 +1,16 @@
 import React from "react";
 
-import styled, { Container, SmallContainer, Underline } from "../../style";
+import styled, { Container, SmallContainer, AnimationWrapper } from "../../style";
 import ImageCp from "../common/ImageCp";
 import SubAllNaviCp from "./SubNaviCp";
-const TitleLink = styled(Underline)`
-  width: 120px;
-`;
 
-const Wrapper = styled.div`
+const Wrapper = styled(AnimationWrapper)`
   width: 100%;
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   position: absolute;
-  top: 3em;
   left: 0;
+  top: 3em;
   background-color: #fff;
 `;
 
@@ -28,6 +25,7 @@ const Wrap = styled(SmallContainer)`
     width: 40%;
   }
 `;
+
 const SubWrap = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -38,13 +36,11 @@ const SubAllCp = ({ data }) => {
     <Wrapper>
       <Container>
         <Wrap>
-          <div>
-            <SubWrap>
-              {data.map((v, i) => (
-                <SubAllNaviCp data={v} key={i} />
-              ))}
-            </SubWrap>
-          </div>
+          <SubWrap>
+            {data.map((v, i) => (
+              <SubAllNaviCp data={v} key={i} />
+            ))}
+          </SubWrap>
           <div>
             <ImageCp maxWidth={true} src="/img/shop-banner1.jpg" className="mb-3" />
             <ImageCp maxWidth={true} src="/img/shop-banner2.jpg" />

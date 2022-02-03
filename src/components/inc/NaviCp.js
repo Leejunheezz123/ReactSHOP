@@ -20,11 +20,9 @@ const NaviCp = ({ data, type }) => {
   const onMouseEnter = useCallback((e) => {
     setShow(true);
   }, []);
-
   const onMouseLeave = useCallback((e) => {
     setShow(false);
   }, []);
-
   return (
     <li>
       {type === "A" ? (
