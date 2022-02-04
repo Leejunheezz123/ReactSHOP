@@ -1,60 +1,73 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Slider from "react-slick";
+import React from "react";
+import styled, { css, color } from "../../style";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import styled from "../../style";
-import { filePath } from "../../modules/util";
-
-const Wrapper = styled.section`
-  width: 100%;
-  overflow-x: hidden;
-  padding-bottom: 3em;
+const Wrapper = styled.div`
+  position: relative;
 `;
 
-const BannerCp = () => {
-  const [banner, setBanner] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:3100/api/banner")
-      .then(({ data }) => {
-        const { content: contents, BoardFiles } = data.list;
-        setBanner(
-          contents.split("^^").map((v, i) => {
-            let [title, price, content, link] = v.split("|");
-            return {
-              title,
-              price,
-              content,
-              link,
-              file: filePath(BoardFiles[i].saveName),
-            };
-          })
-        );
-      })
-      .catch((err) => console.log(err));
-  }, []);
+const positionStyle = ({ pos }) => {
+  if (pos === "L")
+    return css`
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left;
+    `;
+  else if (pos === "R")
+    return css`
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: right;
+    `;
+  else
+    return css`
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
+      text-align: center;
+    `;
+};
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+const Contents = styled.ul`
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.35);
+  position: absolute;
+  padding: 2em;
+  ${positionStyle}
+`;
+
+const Title = styled.h3`
+  font-size: 2em;
+  font-weight: bold;
+  color: ${color.black};
+  margin-bottom: 0.75em;
+`;
+
+const Price = styled.div`
+  font-size: 1.25em;
+  font-weight: bold;
+  color: ${color.primary};
+  margin-bottom: 1.5em;
+`;
+
+const Content = styled.div`
+  font-size: 1em;
+  color: ${color.grey};
+  margin-bottom: 1.5em;
+`;
+
+const BannerCp = ({ title, price, content, link, file, pos }) => {
   return (
     <Wrapper>
-      <Slider {...settings}>
-        {banner.map((v, i) => (
-          <div>
-            <img src={v.file} className="w100" alt={v.title} key={i} />
-          </div>
-        ))}
-      </Slider>
+      <Contents pos={pos}>
+        <Title>{title}</Title>
+        <Price>From {price}</Price>
+        <Content>{content}</Content>
+      </Contents>
+      <img src={file} className="w100" alt={title} />
     </Wrapper>
   );
 };
 
-export default React.memo(BannerCp);
+export default BannerCp;

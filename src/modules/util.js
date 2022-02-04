@@ -1,6 +1,6 @@
 // require('dotenv').config();
 
 export const filePath = (fileName) => {
-  const rootURL = "http://127.0.0.1:3100/uploads";
+  const rootURL = process.env.REACT_APP_FILE_URL;
   return `${rootURL}/${fileName.substr(0, 6)}/${fileName}`;
 };
