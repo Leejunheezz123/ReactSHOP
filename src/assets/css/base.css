@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap");
+
 html,
 body,
 h1,
@@ -76,4 +77,22 @@ a {
 
 .wrapper {
   border-color: blue;
+}
+
+.slick-dots {
+  bottom: 1em;
+}
+
+.slick-dots li button:before {
+  font-size: 16px;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+  color: #ccc;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.875;
+  color: #28cdff;
 }
