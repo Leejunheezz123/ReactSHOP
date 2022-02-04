@@ -1,8 +1,11 @@
 import React from "react";
-import styled, { css, color } from "../../style";
+import Button from "@mui/material/Button";
+import styled, { css, color, font } from "../../style";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   position: relative;
+  font-family: ${font.en};
 `;
 
 const positionStyle = ({ pos }) => {
@@ -38,22 +41,23 @@ const Contents = styled.ul`
 `;
 
 const Title = styled.h3`
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
   color: ${color.black};
   margin-bottom: 0.75em;
 `;
 
 const Price = styled.div`
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-weight: bold;
   color: ${color.primary};
   margin-bottom: 1.5em;
 `;
 
 const Content = styled.div`
-  font-size: 1em;
-  color: ${color.grey};
+  font-size: 1.125em;
+  line-height: 1.5em;
+  color: ${color.dark};
   margin-bottom: 1.5em;
 `;
 
@@ -64,6 +68,15 @@ const BannerCp = ({ title, price, content, link, file, pos }) => {
         <Title>{title}</Title>
         <Price>From {price}</Price>
         <Content>{content}</Content>
+        <Button
+          to={link}
+          component={Link}
+          variant="contained"
+          disableElevation
+          color="warning"
+        >
+          SHOP NOW
+        </Button>
       </Contents>
       <img src={file} className="w100" alt={title} />
     </Wrapper>
