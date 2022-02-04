@@ -50,4 +50,4 @@ const NoticeWrapperCp = ({ title, src, content, link, button }) => {
   );
 };
 
-export default NoticeWrapperCp;
+export default React.memo(NoticeWrapperCp);

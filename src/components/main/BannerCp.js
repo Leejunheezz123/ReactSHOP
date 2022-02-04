@@ -61,7 +61,7 @@ const Content = styled.div`
   margin-bottom: 1.5em;
 `;
 
-const BannerCp = ({ title, price, content, link, file, pos }) => {
+const BannerCp = ({ title, price, content, link = "/", file, pos }) => {
   return (
     <Wrapper>
       <Contents pos={pos}>
@@ -83,4 +83,4 @@ const BannerCp = ({ title, price, content, link, file, pos }) => {
   );
 };
 
-export default BannerCp;
+export default React.memo(BannerCp);

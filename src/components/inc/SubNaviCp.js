@@ -28,7 +28,7 @@ const List = styled.a`
   .withComponent(Underline)
   .withComponent(Link);
 
-const SubNaviCp = ({ data }) => {
+const SubNavi = ({ data }) => {
   return (
     <ListWrap>
       <Title to="/">{data.title}</Title>
@@ -41,4 +41,4 @@ const SubNaviCp = ({ data }) => {
   );
 };
 
-export default SubNaviCp;
+export default React.memo(SubNavi);

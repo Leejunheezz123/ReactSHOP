@@ -1,6 +1,7 @@
 import React from "react";
-import TestNavi from "../components/TestNavi";
 import styled from "@emotion/styled";
+
+import TestNavi from "../components/TestNavi";
 
 const Wrapper = styled.div`
   max-width: 1200px;
@@ -16,4 +17,4 @@ const AuthLogin = () => {
   );
 };
 
-export default AuthLogin;
+export default React.memo(AuthLogin);
