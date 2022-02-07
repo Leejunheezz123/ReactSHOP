@@ -78,9 +78,10 @@ const BannerCp = ({ title, price, content, link = "/", file, pos }) => {
           SHOP NOW
         </Button>
       </Contents>
-      <img src={file} className="w100" alt={title} />
+      <img src="/img/banner-slider-1.jpg" className="w100" alt={title} />
     </Wrapper>
   );
 };
+/* <img src="{file}" className="w100" alt={title} /> */
 
 export default React.memo(BannerCp);
